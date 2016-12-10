@@ -1,4 +1,5 @@
-
+<?php session_start();
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -81,18 +82,33 @@
 					<li><a href="officials_index.php"><span class="title">Danh Sách Cán Bộ</span></a></li>
 					<li><a href="listroom_index.php"><span class="title">Thông Tin Phòng</span></a></li>
 				</ul>
-			</li>
-			
-			<li class="has-sub"><a href="basic-tables.html"><i class="icon-window"></i><span class="title">Hoạt Động Cư Trú</span></a>
-				<ul class="nav collapse">
-					<li><a href="registation-room.php"><span class="title">Đăng Ký Phòng</span></a></li>						
+			</li>	
+			<?php 
+				if(isset($_SESSION['TaiKhoan'])){
+					echo "<li class='has-sub'><a href='panels.html'><i class='icon-users'></i><span class='title'>Người Dùng</span></a>
+					<ul class='nav collapse'>
+					<li><a href='index_user.php'><span class='title'>Thông tin cá nhân </span></a></li>
+					<li><a href='user_room_information.php'><span class='title'>Thông tin phòng</span></a></li>	
+					<li><a href='user_thongbao.php'><span class='title'>Thông báo</span></a></li>					
+					<li><a href='user_reported-missing.php'><span class='title'>Báo vắng</span></a></li>			
+					<li><a href='user_extend-room.php'><span class='title'>Gia Hạn Phòng</span></a></li>
+					<li><a href='user_request.php'><span class='title'>Yêu Cầu</span></a></li>					
+					<li><a href='service.php'><span class='title'>Dịch Vụ</span></a></li>					
+					<li><a href='feedback.php'><span class='title'>Góp ý</span></a></li>					
+					</ul>
+						</li>";
+				}else{
+					echo "<li class='has-sub'><a href='basic-tables.html'><i class='icon-window'></i><span class='title'>Hoạt Động Cư Trú</span></a>
+				<ul class='nav collapse'>
+					<li><a href='registation-room.php'><span class='title'>Đăng Ký Phòng</span></a></li>	
 				</ul>
-			</li>
-			<li class="other-activity.html"><a href="other-activity_index.php"><i class="icon-doc-text"></i><span class="title">Hoạt Động Khác</span></a>
+			</li>";
+				}
+			?>
+			<li class="other-activity.html"><a href="orther-activity_index.php"><i class="icon-doc-text"></i><span class="title">Hoạt Động Khác</span></a>
 			</li>
 			<li class="seach.html"><a href="seach.php"><i class="icon-search"></i><span class="title">Tìm Kiếm</span></a>
 			</li>
-
 		</ul>
 		<!-- /main navigation -->		
   </div>
@@ -113,16 +129,27 @@
 					<div id="header-logo-infologo">
                             <h3><b>KÝ TÚC XÁ ĐẠI HỌC BÁCH KHOA</b></h3>
                             <p>Dormitory of University of Science and Technology</p>
-                        </div>
-                        
-                        
+                        </div>                          
                     </a>
 		  	</div>
 		  	<div class="col-sm-6 col-xs-7">
 		  			<div style="float: right;">
-			  				<div class="login-signup">
-			  				<button class="btn btn-primary btn-width" type="button" style="margin-left:8px"><a href="login.php">Đăng Nhập</a></button>
-			  			</div>						
+			  				<?php 
+      				 if (isset($_SESSION['TaiKhoan'])){
+      				 	echo "<a data-toggle='dropdown' class='dropdown-toggle' href='index_user.php' aria-expanded='false'>
+      				 		<img width='44' class='img-circle avatar' alt='' src='images/nu.jpg'>{$_SESSION['TaiKhoan']}
+      				 		<span class='caret'></span></a>
+      				 		<ul class='dropdown-menu'>
+				 			<li><a href='#''><i class='icon-cog'></i>Account settings</a></li>
+				  			<li><a href='logout.php'><i class='icon-logout'></i>Logout</a></li>
+							</ul>";
+      				 }else{
+      				 	echo "<div class='login-signup'>
+			  				  <button class='btn btn-primary btn-width' type='button' style='margin-left:8px'>
+			  				  <a href='login.php'>Đăng Nhập</a></button>
+			  				  </div>";	
+      				 }
+      				 ?>						
 		  			</div>
 			
 		  	</div>

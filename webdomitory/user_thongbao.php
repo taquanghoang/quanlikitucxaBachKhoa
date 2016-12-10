@@ -1,4 +1,5 @@
-
+<?php session_start();
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -79,15 +80,32 @@
 				<ul class="nav collapse">
 					<li><a href="introduce_index.php"><span class="title">Giới Thiệu</span></a></li>
 					<li><a href="officials_index.php"><span class="title">Danh Sách Cán Bộ</span></a></li>
-					<li><a href="listroom_index.php"><span class="title">Thông Tin Phòng</span></a></li>
+					<li><a href="listroom_index.php"><span class="title">Thông Tin Phòng</span></a></li>		
 				</ul>
 			</li>
-			<li class="has-sub"><a href="basic-tables.html"><i class="icon-window"></i><span class="title">Hoạt Động Cư Trú</span></a>
+
+			<li class="has-sub"><a href="panels.html"><i class="icon-users"></i><span class="title">Người Dùng</span></a>
 				<ul class="nav collapse">
-					<li><a href="registation-room.php"><span class="title">Đăng Ký Phòng</span></a></li>
+					<li><a href="index_user.php"><span class="title">Thông tin cá nhân </span></a></li>
+					<li><a href="user_room_information.php"><span class="title">Thông tin phòng</span></a></li>	
+					<li><a href="user_thongbao.php"><span class="title">Thông báo</span></a></li>					
+					<li><a href="user_reported-missing.php"><span class="title">Báo vắng</span></a></li>					
+					<li><a href="user_extend-room.php"><span class="title">Gia Hạn Phòng</span></a></li>
+					<li><a href="user_request.php"><span class="title">Yêu Cầu</span></a></li>					
+					<li><a href="user_service.php"><span class="title">Dịch Vụ</span></a></li>					
+					<li><a href="feedback.php"><span class="title">Góp ý</span></a></li>
+					
 				</ul>
 			</li>
-			<li class="other-activity.html"><a href="other-activity_index.php"><i class="icon-doc-text"></i><span class="title">Hoạt Động Khác</span></a>
+			<!-- <li class="has-sub"><a href="basic-tables.html"><i class="icon-window"></i><span class="title">Hoạt Động Cư Trú</span></a>
+				<ul class="nav collapse">
+					<li><a href="registation-room.php"><span class="title">Đăng Ký Phòng</span></a></li>					
+					<li><a href="extend-room.php"><span class="title">Gia Hạn Phòng</span></a></li>
+					<li><a href="request.php"><span class="title">Yêu Cầu</span></a></li>
+					<li><a href="service.php"><span class="title">Dịch Vụ</span></a></li>
+				</ul>
+			</li> -->
+			<li class="other-activity.html"><a href="orther-activity_index.php"><i class="icon-doc-text"></i><span class="title">Hoạt Động Khác</span></a>
 			</li>
 			<li class="seach.html"><a href="seach.php"><i class="icon-search"></i><span class="title">Tìm Kiếm</span></a>
 			</li>
@@ -117,27 +135,157 @@
                         
                     </a>
 		  	</div>
-		  	<div class="col-sm-6 col-xs-7">
-		  			<div style="float: right;">
-			  				<div class="login-signup">
-			  				<button class="btn btn-primary btn-width" type="button" style="margin-left:8px"><a href="login.php">Đăng Nhập</a></button>
-			  			</div>						
-		  			</div>
-			
+
+		  	<!-- Nếu đã đăng  nhập -->
+		  	<!-- User info -->
+		  	<ul class="user-info pull-left">          
+			  <li class="profile-info dropdown" style="margin-left: 350px;margin-top: 10px;"> 
+			  <?php 
+      				 if (isset($_SESSION['TaiKhoan'])){
+      				 	echo "<a data-toggle='dropdown' class='dropdown-toggle' href='index_user.php' aria-expanded='false'>
+      				 		<img width='44' class='img-circle avatar' alt='' src='images/nu.jpg'>{$_SESSION['TaiKhoan']}
+      				 		<span class='caret'></span></a>
+      				 		<ul class='dropdown-menu'>
+				 			<li><a href='#'><i class='icon-cog'></i>Account settings</a></li>
+				  			<li><a href='logout.php'><i class='icon-logout'></i>Logout</a></li>
+							</ul>";
+      				 }
+      				 ?>
+				<!-- /user action menu -->
+			  </li>
+			</ul>
+			<!-- User info -->
+
+			<!-- Nếu chưa đăng nhập 
+			<div class="col-sm-6 col-xs-7">
+	  			<div style="float: right;">
+		  				<div class="login-signup">
+		  				<button class="btn btn-primary btn-width" type="button" style="margin-left:8px">Đăng Nhập</button>
+		  			</div>						
+	  			</div>			
 		  	</div>
+			-->
+
 		</div>
 		<!-- /main header -->
 		
 		<!-- Main content -->
 		<div class="main-content">
-		
-		</div>
-
-
-
+			
+			<!-- Breadcrumb -->
+			<ol class="breadcrumb breadcrumb-2"> 
+				<li><a href="index.php"><i class="fa fa-home"></i>Home</a></li> 
+				<li>Ký túc xá</li> 
+				<li class="active"><strong>Thông báo</strong></li> 
+			</ol>
+			 <h2 class="page-title">Thông báo</h2> 
 			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading no-border clearfix" style="background: #58FAF4;"> 
+							<h3 class="panel-title"><b>Ngày 11/13/2016</b></h3>
+						</div> 
+						<!-- panel body --> 
+						<div class="panel-body">
+							<div class="col-lg-10">
+								<!-- Card Container -->
+				<div class="cards-container default-view">
 				
+					<!-- Card -->
+					<div class="card">
+					
+						<!-- Card Header -->
+						<div class="card-header">
+
+							<!-- Card Short Description -->
+							<div class="card-short-description">
+								<h5><b>THÔNG BÁO PHÒNG TRÁNH BÃO SỐ 7</b></h5>
+								<p>8:40:32 AM</p>
+							</div>
+							<!-- /card short description -->
+							
+						</div>
+						<!-- /card header -->
+						
+						<!-- Card Content -->
+						<div class="card-content">
+							<p> Theo thông tin dự báo của Đài khí tượng thuỷ văn Trung ương, hồi 19 giờ ngày 16/10, vị trí tâm bão ở vào khoảng 16,7 độ Vĩ Bắc; 117,3 độ Kinh Đông, cách quần đảo Hoàng Sa khoảng 540km về phía Đông. Sức gió mạnh nhất ở vùng gần tâm bão mạnh cấp 13 (135-150km/giờ), giật cấp 16.</p>
+							<div class="more">
+								<button class="btn btn-primary btn-rounded btn-sm" type="button">CLICK MORE</button>
+							</div>
+						</div>
+						<!-- /card content -->
+						
+					</div>
+					<!-- /card -->
+					
+					<!-- Card -->
+					<div class="card">
+					
+						<!-- Card Header -->
+						<div class="card-header">
+
+							<!-- Card Short Description -->
+							<div class="card-short-description">
+								<h5><b>THÔNG BÁO PHÒNG TRÁNH BÃO SỐ 7</b></h5>
+								<p>8:40:32 AM</p>
+							</div>
+							<!-- /card short description -->
+							
+						</div>
+						<!-- /card header -->
+						
+						<!-- Card Content -->
+						<div class="card-content">
+							<p> Theo thông tin dự báo của Đài khí tượng thuỷ văn Trung ương, hồi 19 giờ ngày 16/10, vị trí tâm bão ở vào khoảng 16,7 độ Vĩ Bắc; 117,3 độ Kinh Đông, cách quần đảo Hoàng Sa khoảng 540km về phía Đông. Sức gió mạnh nhất ở vùng gần tâm bão mạnh cấp 13 (135-150km/giờ), giật cấp 16.</p>
+							<div class="more">
+								<button class="btn btn-primary btn-rounded btn-sm" type="button">CLICK MORE</button>
+							</div>
+						</div>
+						<!-- /card content -->
+						
+					</div>
+					<!-- /card -->
+					
+					<!-- Card -->
+					<div class="card">
+					
+						<!-- Card Header -->
+						<div class="card-header">
+
+							<!-- Card Short Description -->
+							<div class="card-short-description">
+								<h5><b>THÔNG BÁO PHÒNG TRÁNH BÃO SỐ 7</b></h5>
+								<p>8:40:32 AM</p>
+							</div>
+							<!-- /card short description -->
+							
+						</div>
+						<!-- /card header -->
+						
+						<!-- Card Content -->
+						<div class="card-content">
+							<p> Theo thông tin dự báo của Đài khí tượng thuỷ văn Trung ương, hồi 19 giờ ngày 16/10, vị trí tâm bão ở vào khoảng 16,7 độ Vĩ Bắc; 117,3 độ Kinh Đông, cách quần đảo Hoàng Sa khoảng 540km về phía Đông. Sức gió mạnh nhất ở vùng gần tâm bão mạnh cấp 13 (135-150km/giờ), giật cấp 16.</p>
+							<div class="more">
+								<button class="btn btn-primary btn-rounded btn-sm" type="button">CLICK MORE</button>
+							</div>
+						</div>
+						<!-- /card content -->
+						
+					</div>
+					<!-- /card -->
+					
+				</div>
+				<!-- /card container -->
+						</div>
+						<!--/panel body -->
+					</div>
+					<!--/panel panel default-->
+				</div>
 			</div>
+			</div>
+			<!--/row-->
+
 			<!-- Footer -->
 			<footer class="footer-main"> 
 				
@@ -181,11 +329,11 @@
   
 </div>
 </span>
-<div class="fixed">
+<!-- <div class="fixed">
 	                    	<a href="https://www.facebook.com/Dormitory-DUT-560787624081622/" targer="_blank"><img class="fa-fa-fmxx" src="images/fb.png" alt="HTML5 icon" width="35"></a>
 	                    	<a href="https://twitter.com" target="_blank"><img class="fa-fa-fmxx" src="images/tw.png" alt="HTML5 icon" width="35">	</a> 
 	                    	<a href="https://www.youtube.com/user/googleplusupdates" target="_blank"><img class="fa-fa-fmxx" src="images/gp.png" alt="HTML5 icon" width="35">	</a>                    	
-</div>
+</div> -->
 <!--Load JQuery-->
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

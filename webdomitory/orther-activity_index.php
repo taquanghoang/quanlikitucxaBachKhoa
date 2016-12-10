@@ -134,7 +134,6 @@
                         
                     </a>
 		  	</div>
-		  	<!-- Kiểm tra session -->
 		  	<div class="col-sm-6 col-xs-7">
 		  			<div style="float: right;">
 			  				<?php 
@@ -143,7 +142,7 @@
       				 		<img width='44' class='img-circle avatar' alt='' src='images/nu.jpg'>{$_SESSION['TaiKhoan']}
       				 		<span class='caret'></span></a>
       				 		<ul class='dropdown-menu'>
-				 			<li><a href='#''><i class='icon-cog'></i>Account settings</a></li>
+				 			<li><a href='#'><i class='icon-cog'></i>Account settings</a></li>
 				  			<li><a href='logout.php'><i class='icon-logout'></i>Logout</a></li>
 							</ul>";
       				 }else{
@@ -161,7 +160,7 @@
 		
 		<!-- Main content -->
 		<div class="main-content">
-		
+			
 		</div>
 
 

@@ -1,6 +1,6 @@
 <?php session_start();
  ?>
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <!-- Mirrored from g-axon.com/mouldifi-3.0/light/editors.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 12 Nov 2016 02:49:20 GMT -->
@@ -77,7 +77,6 @@
 
 			<li class="has-sub"><a href="panels.html"><i class="icon-users"></i><span class="title">Người Dùng</span></a>
 				<ul class="nav collapse">
-					<!-- <li><a href="login.php"><span class="title">Đăng Nhập</span></a></li> -->
 					<li><a href="index_user.php"><span class="title">Thông tin cá nhân </span></a></li>
 					<li><a href="user_room_information.php"><span class="title">Thông tin phòng</span></a></li>	
 					<li><a href="user_thongbao.php"><span class="title">Thông báo</span></a></li>					
@@ -89,17 +88,10 @@
 					
 				</ul>
 			</li>
-			<!-- <li class="has-sub"><a href="basic-tables.html"><i class="icon-window"></i><span class="title">Hoạt Động Cư Trú</span></a>
-				<ul class="nav collapse">
-					<li><a href="registation-room.php"><span class="title">Đăng Ký Phòng</span></a></li>					 
-					<li><a href="extend-room.html"><span class="title">Gia Hạn Phòng</span></a></li>					
-					<li><a href="service.html"><span class="title">Dịch Vụ</span></a></li>
-					<li><a href="request.html"><span class="title">Yêu Cầu</span></a></li>
-				</ul>
-			</li> -->
-			<li class="other-activity.html"><a href="orther-activity_index.php"><i class="icon-doc-text"></i><span class="title">Hoạt Động Khác</span></a>
+			
+			<li class="other-activity.html"><a href="form-basic.html"><i class="icon-doc-text"></i><span class="title">Hoạt Động Khác</span></a>
 			</li>
-			<li class="seach.html"><a href="seach.php"><i class="icon-search"></i><span class="title">Tìm Kiếm</span></a>
+			<li class="seach.html"><a href="form-basic.html"><i class="icon-search"></i><span class="title">Tìm Kiếm</span></a>
 			</li>
 
 		</ul>
@@ -114,20 +106,19 @@
 		<div class="main-header row">
 
 		  
-			<div class="col-sm-6 col-xs-5 height-header1">
-						<a href="index.php">
-						<div id="header-logo-img">
-	                        		<img src="images/logobk.jpg" alt = "HTML5 icon" width="60" >
-	                        </div>
-						<div id="header-logo-infologo">
-	                            <h3><b>KÝ TÚC XÁ ĐẠI HỌC BÁCH KHOA</b></h3>
-	                            <p>Dormitory of University of Science and Technology</p>
-	                    </div>
-	                        
-	                        
-	                    </a>
-			</div>
-
+		  <div class="col-sm-6 col-xs-5 height-header1">
+					<a href="index.php">
+					<div id="header-logo-img">
+                        		<img src="images/logobk.jpg" alt = "HTML5 icon" width="60" >
+                        </div>
+					<div id="header-logo-infologo">
+                            <h3><b>KÝ TÚC XÁ ĐẠI HỌC BÁCH KHOA</b></h3>
+                            <p>Dormitory of University of Science and Technology</p>
+                        </div>
+                        
+                        
+                    </a>
+		  </div>
 		  		  <div class="col-sm-6 col-xs-7">
 		  
 			<!-- User info -->
@@ -139,96 +130,66 @@
       				 		<img width='44' class='img-circle avatar' alt='' src='images/nu.jpg'>{$_SESSION['TaiKhoan']}
       				 		<span class='caret'></span></a>
       				 		<ul class='dropdown-menu'>
-				 			<li><a href='#'><i class='icon-cog'></i>Account settings</a></li>
+				 			<li><a href='#''><i class='icon-cog'></i>Account settings</a></li>
 				  			<li><a href='logout.php'><i class='icon-logout'></i>Logout</a></li>
 							</ul>";
       				 }
       				 ?>
 				<!-- /user action menu -->
-				
 			  </li>
 			</ul>
 			</div>
 			<!-- /user info -->
-			
 		</div>
 		<!-- /main header -->
 	
 	<!-- Main content -->
-	<div class="main-content" >	
-				<!-- Breadcrumb -->
-				<ol class="breadcrumb breadcrumb-2"> 
-					<li><a href="index.php"><i class="fa fa-home"></i>Home</a></li> 
-					<li>Ký túc xá</li> 
-					<li class="active"><strong>Thông tin sinh viên</strong></li> 
-				</ol>
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="panel panel-default">
-						<div class="panel-heading no-border clearfix" style="background: #58FAF4;"> 
-							<h2 class="panel-title"><b>THÔNG TIN CÁ NHÂN</b></h2>
-						</div> 
-						<!-- panel body --> 
-						<div class="panel-body">
-							<div class="col-lg-10">
-								<!-- Card Container -->
-								<div class="cards-container default-view">
-						
-								<!-- Card -->
-								<div class="card">
-									
-									<!-- Card Content -->
-									<div class="card-content" style="margin-left: 0px;">
-										<form action="" method="" style="margin: auto; width: 950px">
-											<table class="table">
-												<tr>
-													<td> <label> Mã sinh viên: </label></td>
-													<td> <input type="text" id="MaSV" name="MaSV" value="" /></td>
-													<td> <label> Họ vào tên: </label></td>
-													<td> <input type="text" id="HoTen" name="HoTen" value="" /> </td>
-													<td> <label> Lớp: </label> </td>
-													<td> <input type="text" id="Lop" name="Lop" value="" /></td>
-												</tr>
-
-												<tr>
-													<td> <label> Giới tính: </label> </td>
-													<td> 
-														<select name="GioiTinh">
-															<option value="Nam" selected>Nam</option>
-															<option value="Nu">Nữ</option>
-														</select>
-													</td>
-													<td> <label> Ngày sinh: </label> </td>
-													
-														<td><div id="year-view" class="input-group date" style="width: 176px;"> 
-															<input id="year-view" type="text" value="03/04/2016" class="form-control"> 
-															<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-														</div></td>
-												 
-													<td> <label> Nơi sinh: </label> </td>
-													<td> <input type="text" id="NoiSinh" name="NoiSinh" value="" /></td>
-												</tr>
-												<tr>
-													<td><input type="submit" id="CapNhat" name="CapNhat" value="Cập nhật" /></td>
-												</tr>
-											</table>
-										</form>
-									</div>
-									<!-- /card content -->			
-								</div>
-								<!-- /card -->
+	<div class="main-content">
+		
+		<!-- Breadcrumb -->
+		<ol class="breadcrumb breadcrumb-2"> 
+			<li><a href="index.php"><i class="fa fa-home"></i>Home</a></li> 
+			<li><a href="form-basic.html">Người dùng</a></li> 
+			<li class="active"><strong>Góp ý</strong></li> 
+		</ol>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading no-border clearfix" style="background: #58FAF4;"> 
+						<h2 class="panel-title"><b> NỘI DUNG GÓP Ý </b></h2>
+					</div> 
+					<!-- panel body --> 
+					<div class="panel-body">
+						<div class="col-lg-10">
+						<!-- Card Container -->
+						<div class="cards-container default-view">
+							<div id="summernote">
+								 <p>Nội dung góp ý</p>
 							</div>
-							<!-- /card container -->
+							<div class="row" style="text-align: center;">
+								<button class="btn btn-primary" type="button" style="width: 100px; ">Gửi</button>
+							</div>	
 						</div>
-						<!--/panel body -->
+						<!-- /card container -->	
+						</div>					
 					</div>
-					<!--/panel panel default-->
+					<!--/panel body -->
 				</div>
 			</div>
+		</div>
+		<!-- <div class="row">
+			<div class="col-lg-12">
+				<h3 class="title">Nhập nội dung góp ý</h3>
+				<div id="summernote">
+					 <p>Nội dung góp ý</p>
+				</div>
 			</div>
-			<!--/row-->	 	
-		  		
-	</div>
+		</div> -->
+		
+
+
+
+			</div>
 			<!-- Footer -->
 			<footer class="footer-main"> 
 
@@ -264,8 +225,7 @@
                     </div>
                 </div>
 
-			</footer>
-			</footer>		
+			</footer>	
 			<!-- /footer -->
 	  </div>
 	  <!-- /main content -->

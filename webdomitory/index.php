@@ -1,4 +1,5 @@
-
+<?php session_start();
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +88,7 @@
 					<li><a href="registation-room.php"><span class="title">Đăng Ký Phòng</span></a></li>
 				</ul>
 			</li>
-			<li class="other-activity.html"><a href="other-activity_index.php"><i class="icon-doc-text"></i><span class="title">Hoạt Động Khác</span></a>
+			<li class="other-activity.html"><a href="orther-activity_index.php"><i class="icon-doc-text"></i><span class="title">Hoạt Động Khác</span></a>
 			</li>
 			<li class="seach.html"><a href="seach.php"><i class="icon-search"></i><span class="title">Tìm Kiếm</span></a>
 			</li>
@@ -118,12 +119,28 @@
                     </a>
 		  	</div>
 		  	<div class="col-sm-6 col-xs-7">
-		  			<div style="float: right;">
-			  				<div class="login-signup">
-			  				<button class="btn btn-primary btn-width" type="button" style="margin-left:8px"><a href="login.php">Đăng Nhập</a></button>
-			  			</div>						
-		  			</div>
-			
+		  			<ul class="user-info pull-left">          
+			  <li class="profile-info dropdown" style="margin-left: 350px;margin-top: 10px;"> 
+			  <?php 
+      				 if (isset($_SESSION['TaiKhoan'])){
+      				 	echo "<a data-toggle='dropdown' class='dropdown-toggle' href='index_user.php' aria-expanded='false'>
+      				 		<img width='44' class='img-circle avatar' alt='' src='images/nu.jpg'>{$_SESSION['TaiKhoan']}
+      				 		<span class='caret'></span></a>
+      				 		<ul class='dropdown-menu'>
+				 			<li><a href='#'><i class='icon-cog'></i>Account settings</a></li>
+				  			<li><a href='logout.php'><i class='icon-logout'></i>Logout</a></li>
+							</ul>";
+      				 }else{
+      				 	echo "<div class='login-signup'>
+			  				  <button class='btn btn-primary btn-width' type='button' style='margin-left:8px'>
+			  				  <a href='login.php'>Đăng Nhập</a></button>
+			  				  </div>";	
+      				 }
+      				 ?>
+				<!-- /user action menu -->
+				
+			  </li>
+			</ul>
 		  	</div>
 		</div>
 		<!-- /main header -->

@@ -145,7 +145,6 @@
       				 }
       				 ?>
 				<!-- /user action menu -->
-				
 			  </li>
 			</ul>
 			</div>
@@ -155,80 +154,36 @@
 		<!-- /main header -->
 	
 	<!-- Main content -->
-	<div class="main-content" >	
-				<!-- Breadcrumb -->
-				<ol class="breadcrumb breadcrumb-2"> 
-					<li><a href="index.php"><i class="fa fa-home"></i>Home</a></li> 
-					<li>Ký túc xá</li> 
-					<li class="active"><strong>Thông tin sinh viên</strong></li> 
-				</ol>
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="panel panel-default">
-						<div class="panel-heading no-border clearfix" style="background: #58FAF4;"> 
-							<h2 class="panel-title"><b>THÔNG TIN CÁ NHÂN</b></h2>
-						</div> 
-						<!-- panel body --> 
-						<div class="panel-body">
-							<div class="col-lg-10">
-								<!-- Card Container -->
-								<div class="cards-container default-view">
+	<div class="main-content">		
+		  	<!-- Breadcrumb -->
+		<ol class="breadcrumb breadcrumb-2"> 
+			<li><a href="index.php"><i class="fa fa-home"></i>Home</a></li> 
+			<li>Ký túc xá</li> 
+			<li class="active"><strong> Dịch vụ </strong></li> 
+		</ol>	
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading no-border clearfix" style="background: #58FAF4;"> 
+						<h2 class="panel-title"><b> DỊCH VỤ </b></h2>
+					</div> 
+					<!-- panel body --> 
+					<div class="panel-body">
+						<div class="col-lg-10">
+						<!-- Card Container -->
+						<div class="cards-container default-view">
 						
-								<!-- Card -->
-								<div class="card">
-									
-									<!-- Card Content -->
-									<div class="card-content" style="margin-left: 0px;">
-										<form action="" method="" style="margin: auto; width: 950px">
-											<table class="table">
-												<tr>
-													<td> <label> Mã sinh viên: </label></td>
-													<td> <input type="text" id="MaSV" name="MaSV" value="" /></td>
-													<td> <label> Họ vào tên: </label></td>
-													<td> <input type="text" id="HoTen" name="HoTen" value="" /> </td>
-													<td> <label> Lớp: </label> </td>
-													<td> <input type="text" id="Lop" name="Lop" value="" /></td>
-												</tr>
-
-												<tr>
-													<td> <label> Giới tính: </label> </td>
-													<td> 
-														<select name="GioiTinh">
-															<option value="Nam" selected>Nam</option>
-															<option value="Nu">Nữ</option>
-														</select>
-													</td>
-													<td> <label> Ngày sinh: </label> </td>
-													
-														<td><div id="year-view" class="input-group date" style="width: 176px;"> 
-															<input id="year-view" type="text" value="03/04/2016" class="form-control"> 
-															<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-														</div></td>
-												 
-													<td> <label> Nơi sinh: </label> </td>
-													<td> <input type="text" id="NoiSinh" name="NoiSinh" value="" /></td>
-												</tr>
-												<tr>
-													<td><input type="submit" id="CapNhat" name="CapNhat" value="Cập nhật" /></td>
-												</tr>
-											</table>
-										</form>
-									</div>
-									<!-- /card content -->			
-								</div>
-								<!-- /card -->
-							</div>
-							<!-- /card container -->
+								
 						</div>
-						<!--/panel body -->
+						<!-- /card container -->	
+						</div>					
 					</div>
-					<!--/panel panel default-->
+					<!--/panel body -->
 				</div>
 			</div>
-			</div>
-			<!--/row-->	 	
-		  		
+		</div>
 	</div>
+	 <!-- /main content -->
 			<!-- Footer -->
 			<footer class="footer-main"> 
 
@@ -267,8 +222,7 @@
 			</footer>
 			</footer>		
 			<!-- /footer -->
-	  </div>
-	  <!-- /main content -->
+	 
 	  
   </div>
   <!-- /main container -->

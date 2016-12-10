@@ -12,40 +12,51 @@ if (isset($_POST['login']))
     include('DatabaseConnection.php');
      
     //Lấy dữ liệu nhập vào
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $taikhoan = $_POST['username'];
+    $matkhau = $_POST['password'];
      
     // mã hóa pasword
     //$password = md5($password);
      
     //Kiểm tra tên đăng nhập có tồn tại không
-    $query = mysqli_query($link,"SELECT username, password FROM user WHERE username='$username'");
+    $query = mysqli_query($link,"SELECT MaND,TaiKhoan,MatKhau FROM taikhoan WHERE TaiKhoan='$taikhoan'");
     if (mysqli_num_rows($query) == 0) {
-        $msg = "Tai khoan nay khong ton tai";
+        $msg = "Tài khoản này không tồn tại.";
         include_once "login.php";      
         exit;
     }
-     
     //Lấy mật khẩu trong database ra
     $row = mysqli_fetch_array($query);
      
     //So sánh 2 mật khẩu có trùng khớp hay không
-    if ($password != $row['password']) {
-        $msg1 = "Mat khau nay khong dung.";
+    if ($matkhau != $row['MatKhau']) {
+        $msg1 = "Mật khẩu này không đúng.";
         include_once "login.php";
         exit;
     }
-    if($username == "admin"){
-        
+    // }else{
+    //     $_SESSION['TaiKhoan'] = $taikhoan;
+    //     $URL = "index_user.php";
+    //     header ("Location: $URL");
+    //     die(); 
+    // }
+    if($row['MaND'] == 1){        
         $_SESSION['username'] = $username;    
         $URL = "index_admin.php";
         header ("Location: $URL");
         die();    
     }else{
-        $_SESSION['username'] = $username;  
-        $URL = "index_user.php";
-        header ("Location: $URL");
-        die();
+        if($row['MaND'] == 2){
+            $_SESSION['username'] = $username;  
+            $URL = "index-employee-user.php";
+            header ("Location: $URL");
+            die();    
+        }else{
+            $_SESSION['username'] = $username;  
+            $URL = "index_user.php";
+            header ("Location: $URL");
+            die();
+        }  
     } 
     //Lưu tên đăng nhập    
 }

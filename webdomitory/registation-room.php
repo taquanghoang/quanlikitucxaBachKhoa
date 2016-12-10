@@ -88,7 +88,7 @@
 					<li><a href="registation-room.php"><span class="title">Đăng Ký Phòng</span></a></li>					
 				</ul>
 			</li>
-			<li class="other-activity.html"><a href="other-activity_index.php"><i class="icon-doc-text"></i><span class="title">Hoạt Động Khác</span></a>
+			<li class="other-activity.html"><a href="orther-activity_index.php"><i class="icon-doc-text"></i><span class="title">Hoạt Động Khác</span></a>
 			</li>
 			<li class="seach.html"><a href="seach.php"><i class="icon-search"></i><span class="title">Tìm Kiếm</span></a>
 			</li>
@@ -121,7 +121,7 @@
 		  	<div class="col-sm-6 col-xs-7">
 		  			<div style="float: right;">
 			  				<div class="login-signup">
-			  				<button class="btn btn-primary btn-width" type="button" style="margin-left:8px">Đăng Nhập</button>
+			  				<button class="btn btn-primary btn-width" type="button" style="margin-left:8px"><a href="login.php">Đăng Nhập</a></button>
 			  			</div>
 		  			</div>
 			
@@ -189,7 +189,7 @@
 							 	<div class="form-group"> 
 									<label class="col-sm-2 control-label">Mã sinh viên</label> 
 									<div class="col-sm-10"> 
-										<input type="text" placeholder="Placeholder" class="form-control" required="" name="maSV"> 
+										<input type="text" placeholder="Mã sinh viên" class="form-control" required="" name="maSV"> 
 									</div>
 									<?php
 									if(isset($msgMaSV)!=null){
@@ -205,17 +205,27 @@
 	                            </div>
 								<div class="line-dashed"></div>
 								<div class="form-group"> 
-									<label class="col-sm-2 control-label">Họ tên SV</label> 
+									<label class="col-sm-2 control-label">Họ tên sinh viên</label> 
 									<div class="col-sm-10"> 
-										<input type="text" placeholder="Placeholder" class="form-control"
+										<input type="text" placeholder="Họ tên sinh viên" class="form-control"
 										required="" name="hotenSV"> 
 									</div> 
 								</div>
 								<div class="line-dashed"></div>
 								<div class="form-group"> 
+								    <label class="col-sm-2 control-label">Giới tính</label> 
+									<div class="col-sm-10">
+										<div class="radio"> 
+											<label> <input type="radio" value="Nam" name="sex">Nam</label> 
+									 		<label> <input type="radio" value="Nữ" name="sex">Nữ </label>
+									 	</div>
+									</div>
+								</div>
+								<div class="line-dashed"></div>
+								<div class="form-group"> 
 									<label class="col-sm-2 control-label">Email</label> 
 									<div class="col-sm-10"> 
-										<input type="text" placeholder="Placeholder" class="form-control"
+										<input type="text" placeholder="Email" class="form-control"
 										required="" name="email"> 
 									</div>
 									<?php
@@ -225,37 +235,22 @@
 								</div>
 								<div class="line-dashed"></div>
 								<div class="form-group"> 
-								    <label class="col-sm-2 control-label">Giới tính</label> 
-									<div class="col-sm-10">
-										<div class="radio"> 
-											<label> <input type="radio" value="male" id="male" name="sex">Nam</label> 
-									 		<label> <input type="radio" value="female" id="female" name="sex">Nữ </label>
-									 	</div>
-									</div>
-								</div>
-								<div class="line-dashed"></div>
-								<div class="form-group"> 
-									<label class="col-sm-2 control-label">Ngày sinh</label> 
+									<label class="col-sm-2 control-label">Ngày vào ở</label> 
 									<div class="col-sm-10"> 
-										<div id="year-view" class="input-group date"> 
-											<input id="year-view" type="text" value="03/04/2016" name="dateOfBirth" class="form-control"> 
+										<div id="year-view" class="input-group date">
+											<?php 
+												$d = getdate(date("U"));
+												echo "<input id='year-view' type='text' value='{$d['mday']}/{$d['mon']}/{$d['year']}' name='datein' class='form-control'>";
+											?>
 											<span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
 										</div>
 									</div> 
 								</div>
 								<div class="line-dashed"></div>
 								<div class="form-group"> 
-									<label class="col-sm-2 control-label">Quê quán</label> 
-									<div class="col-sm-10"> 
-										<input type="text" placeholder="Placeholder" class="form-control"
-										required="" name="quequan"> 
-									</div> 
-								</div>
-								<div class="line-dashed"></div>
-								<div class="form-group"> 
 									<label class="col-sm-2 control-label">Lớp học phần</label> 
 									<div class="col-sm-10"> 
-										<input type="text" placeholder="Placeholder" class="form-control"
+										<input type="text" placeholder="Lớp học phần" class="form-control"
 										required="" name="lopHP"> 
 									</div> 
 								</div>
@@ -263,35 +258,24 @@
 								<div class="form-group"> 
 									<label class="col-sm-2 control-label">Số điện thoại</label> 
 									<div class="col-sm-10"> 
-										<input type="text" placeholder="Placeholder" class="form-control"
+										<input type="text" placeholder="Số điện thoại" class="form-control"
 										required="" name="sdt"> 
-									</div> 
-								</div>
-								<div class="line-dashed"></div>
-								<div class="form-group"> 
-									<label class="col-sm-2 control-label">Tên nhân thân</label> 
-									<div class="col-sm-10"> 
-										<input type="text" placeholder="Placeholder" class="form-control"
-										required="" name="tennhanthan"> 
-									</div> 
-								</div>
-								<div class="line-dashed"></div>
-								<div class="form-group"> 
-									<label class="col-sm-2 control-label">Số liên lạc khi cần</label> 
-									<div class="col-sm-10"> 
-										<input type="text" placeholder="Placeholder" class="form-control"
-										name="sdtLL"> 
 									</div> 
 								</div>
 								<div class="line-dashed"></div>
 								<div class="form-group"> 
 								 	<label class="col-sm-2 control-label">Chọn Nhà</label> 
 									<div class="col-sm-10"> 
-										<select class="form-control" name="listNha"> 
-											<option>Nha A</option>
-											<option>Nha B</option>
-											<option>Nha C</option>
-											<option>Nha D</option>	
+										
+											<select class="form-control" name="listNha" id='makv'>
+											<?php 
+											
+											include('DatabaseConnection.php');	
+											$query = mysqli_query($link,"SELECT TenKV,MaKV FROM khuvuc ");
+											while($row = mysqli_fetch_array($query)){
+												echo "<option value='{$row['MaKV']}'>{$row['TenKV']}</option>";
+											}
+											?> 
 										</select>
 									</div> 
 								</div>
@@ -299,25 +283,8 @@
 								<div class="form-group"> 
 								 	<label class="col-sm-2 control-label">Chọn phòng</label> 
 									<div class="col-sm-10"> 
-										<select class="form-control" name="listPhong"> 
-											<option>Phong 101</option>
-											<option>Phòng 102</option>
-											<option>Phòng 103</option>
-											<option>Phòng 104</option>
-											<option>Phòng 105</option>
-											<option>Phòng 106</option>
-											<option>Phòng 201</option>
-											<option>Phòng 202</option>
-											<option>Phòng 203</option>
-											<option>Phòng 204</option>
-											<option>Phòng 205</option>
-											<option>Phòng 206</option>
-											<option>Phòng 301</option>
-											<option>Phòng 302</option>
-											<option>Phòng 303</option>
-											<option>Phòng 304</option>
-											<option>Phòng 305</option>
-											<option>Phòng 306</option> 										
+										<select class="form-control" name="listPhong" id="listPhong">
+										 										
 										</select>
 									</div> 
 								</div>
@@ -400,6 +367,30 @@
 <script src="js/plugins/datepicker/bootstrap-datepicker.js"></script>
 <!--ChartJs-->
 <script src="js/plugins/chartjs/Chart.min.js"></script>
+<script language="javascript">
+$(function(){
+	ajax_mamk('KV01');
+	$("#makv").change(function(){
+
+		var makv = $(this).find(':selected').val();
+
+		ajax_mamk(makv);
+	});
+	function ajax_mamk(makv){
+		$.ajax({
+	    	url: 'registation-room-ajax.php',
+	    	type: 'get',
+	    	data:{makv: makv},
+	    	success:function(result){
+	    		console.log(result);
+	    		$('#listPhong').html(result);
+	    	}
+		});
+
+	}
+});
+    
+</script>
 <script>
 	$(document).ready(function () {
 		$('#datepicker').datepicker({

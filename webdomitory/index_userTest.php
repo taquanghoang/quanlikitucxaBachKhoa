@@ -70,36 +70,31 @@
 			<li class="has-sub"><a href="introduce.php"><i class="icon-layout"></i><span class="title">Ký Túc Xá</span></a>
 				<ul class="nav collapse">
 					<li><a href="introduce_index.php"><span class="title">Giới Thiệu</span></a></li>
-					<li><a href="officials_index.php"><span class="title">Danh Sách Cán Bộ</span></a></li>
-					<li><a href="listroom_index.php"><span class="title">Thông Tin Phòng</span></a></li>
+					<li><a href="officials.php"><span class="title">Danh Sách Cán Bộ</span></a></li>
+					<li><a href="listroom.php"><span class="title">Thông Tin Phòng</span></a></li>
 				</ul>
 			</li>
 
 			<li class="has-sub"><a href="panels.html"><i class="icon-users"></i><span class="title">Người Dùng</span></a>
 				<ul class="nav collapse">
-					<!-- <li><a href="login.php"><span class="title">Đăng Nhập</span></a></li> -->
-					<li><a href="index_user.php"><span class="title">Thông tin cá nhân </span></a></li>
-					<li><a href="user_room_information.php"><span class="title">Thông tin phòng</span></a></li>	
-					<li><a href="user_thongbao.php"><span class="title">Thông báo</span></a></li>					
-					<li><a href="user_reported-missing.php"><span class="title">Báo vắng</span></a></li>					
-					<li><a href="user_extend-room.php"><span class="title">Gia Hạn Phòng</span></a></li>
-					<li><a href="user_request.php"><span class="title">Yêu Cầu</span></a></li>					
-					<li><a href="user_service.php"><span class="title">Dịch Vụ</span></a></li>					
-					<li><a href="feedback.php"><span class="title">Góp ý</span></a></li>
+					<li><a href="login.php"><span class="title">Đăng Nhập</span></a></li>
+					<li><a href="buttons.html"><span class="title">Thông Báo</span></a></li>
+					<li><a href="feedback.php"><span class="title">Góp Ý</span></a></li>
+					<li><a href="reported-missing.php"><span class="title">Báo Vắng</span></a></li>
 					
 				</ul>
 			</li>
-			<!-- <li class="has-sub"><a href="basic-tables.html"><i class="icon-window"></i><span class="title">Hoạt Động Cư Trú</span></a>
+			<li class="has-sub"><a href="basic-tables.html"><i class="icon-window"></i><span class="title">Hoạt Động Cư Trú</span></a>
 				<ul class="nav collapse">
-					<li><a href="registation-room.php"><span class="title">Đăng Ký Phòng</span></a></li>					 
-					<li><a href="extend-room.html"><span class="title">Gia Hạn Phòng</span></a></li>					
-					<li><a href="service.html"><span class="title">Dịch Vụ</span></a></li>
+					<li><a href="registation-room.php"><span class="title">Đăng Ký Phòng</span></a></li>					
+					<li><a href="extend-room.html"><span class="title">Gia Hạn Phòng</span></a></li>
 					<li><a href="request.html"><span class="title">Yêu Cầu</span></a></li>
+					<li><a href="service.html"><span class="title">Dịch Vụ</span></a></li>
 				</ul>
-			</li> -->
-			<li class="other-activity.html"><a href="orther-activity_index.php"><i class="icon-doc-text"></i><span class="title">Hoạt Động Khác</span></a>
 			</li>
-			<li class="seach.html"><a href="seach.php"><i class="icon-search"></i><span class="title">Tìm Kiếm</span></a>
+			<li class="other-activity.html"><a href="form-basic.html"><i class="icon-doc-text"></i><span class="title">Hoạt Động Khác</span></a>
+			</li>
+			<li class="seach.html"><a href="form-basic.html"><i class="icon-search"></i><span class="title">Tìm Kiếm</span></a>
 			</li>
 
 		</ul>
@@ -114,120 +109,55 @@
 		<div class="main-header row">
 
 		  
-			<div class="col-sm-6 col-xs-5 height-header1">
-						<a href="index.php">
-						<div id="header-logo-img">
-	                        		<img src="images/logobk.jpg" alt = "HTML5 icon" width="60" >
-	                        </div>
-						<div id="header-logo-infologo">
-	                            <h3><b>KÝ TÚC XÁ ĐẠI HỌC BÁCH KHOA</b></h3>
-	                            <p>Dormitory of University of Science and Technology</p>
-	                    </div>
-	                        
-	                        
-	                    </a>
-			</div>
-
+		  <div class="col-sm-6 col-xs-5 height-header1">
+					<a href="index.php">
+					<div id="header-logo-img">
+                        		<img src="images/logobk.jpg" alt = "HTML5 icon" width="60" >
+                        </div>
+					<div id="header-logo-infologo">
+                            <h3><b>KÝ TÚC XÁ ĐẠI HỌC BÁCH KHOA</b></h3>
+                            <p>Dormitory of University of Science and Technology</p>
+                        </div>
+                        
+                        
+                    </a>
+		  </div>
 		  		  <div class="col-sm-6 col-xs-7">
 		  
-			<!-- User info -->
+			<!-- User info Kiểm tra đăng nhập, để hiện thông tin người dùng -->
 			<ul class="user-info pull-left">          
 			  <li class="profile-info dropdown" style="margin-left: 350px;margin-top: 10px;"> 
 			  <?php 
-      				 if (isset($_SESSION['TaiKhoan'])){
+      				 if (isset($_SESSION['username'])){
       				 	echo "<a data-toggle='dropdown' class='dropdown-toggle' href='index_user.php' aria-expanded='false'>
-      				 		<img width='44' class='img-circle avatar' alt='' src='images/nu.jpg'>{$_SESSION['TaiKhoan']}
-      				 		<span class='caret'></span></a>
-      				 		<ul class='dropdown-menu'>
-				 			<li><a href='#'><i class='icon-cog'></i>Account settings</a></li>
-				  			<li><a href='logout.php'><i class='icon-logout'></i>Logout</a></li>
-							</ul>";
+      				 		<img width='44' class='img-circle avatar' alt='' src='images/nu.jpg'>{$_SESSION['username']}
+      				 		<span class='caret'></span></a>";
+      				 }else{
+      				 	echo "<div class='login-signup'>
+			  				  <button class='btn btn-primary btn-width' type='button' style='margin-left:8px'>
+			  				  <a href='login.php'>Đăng Nhập</a></button>
+			  				  </div>";	
       				 }
       				 ?>
+			  
+				<!-- User action menu -->
+				<ul class="dropdown-menu">
+				  <li><a href="#"><i class="icon-cog"></i>Account settings</a></li>
+				  <li><a href="logout.php"><i class="icon-logout"></i>Logout</a></li>
+				</ul>
 				<!-- /user action menu -->
 				
 			  </li>
 			</ul>
-			</div>
 			<!-- /user info -->
 			
+		  </div>
 		</div>
 		<!-- /main header -->
 	
 	<!-- Main content -->
-	<div class="main-content" >	
-				<!-- Breadcrumb -->
-				<ol class="breadcrumb breadcrumb-2"> 
-					<li><a href="index.php"><i class="fa fa-home"></i>Home</a></li> 
-					<li>Ký túc xá</li> 
-					<li class="active"><strong>Thông tin sinh viên</strong></li> 
-				</ol>
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="panel panel-default">
-						<div class="panel-heading no-border clearfix" style="background: #58FAF4;"> 
-							<h2 class="panel-title"><b>THÔNG TIN CÁ NHÂN</b></h2>
-						</div> 
-						<!-- panel body --> 
-						<div class="panel-body">
-							<div class="col-lg-10">
-								<!-- Card Container -->
-								<div class="cards-container default-view">
-						
-								<!-- Card -->
-								<div class="card">
-									
-									<!-- Card Content -->
-									<div class="card-content" style="margin-left: 0px;">
-										<form action="" method="" style="margin: auto; width: 950px">
-											<table class="table">
-												<tr>
-													<td> <label> Mã sinh viên: </label></td>
-													<td> <input type="text" id="MaSV" name="MaSV" value="" /></td>
-													<td> <label> Họ vào tên: </label></td>
-													<td> <input type="text" id="HoTen" name="HoTen" value="" /> </td>
-													<td> <label> Lớp: </label> </td>
-													<td> <input type="text" id="Lop" name="Lop" value="" /></td>
-												</tr>
-
-												<tr>
-													<td> <label> Giới tính: </label> </td>
-													<td> 
-														<select name="GioiTinh">
-															<option value="Nam" selected>Nam</option>
-															<option value="Nu">Nữ</option>
-														</select>
-													</td>
-													<td> <label> Ngày sinh: </label> </td>
-													
-														<td><div id="year-view" class="input-group date" style="width: 176px;"> 
-															<input id="year-view" type="text" value="03/04/2016" class="form-control"> 
-															<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-														</div></td>
-												 
-													<td> <label> Nơi sinh: </label> </td>
-													<td> <input type="text" id="NoiSinh" name="NoiSinh" value="" /></td>
-												</tr>
-												<tr>
-													<td><input type="submit" id="CapNhat" name="CapNhat" value="Cập nhật" /></td>
-												</tr>
-											</table>
-										</form>
-									</div>
-									<!-- /card content -->			
-								</div>
-								<!-- /card -->
-							</div>
-							<!-- /card container -->
-						</div>
-						<!--/panel body -->
-					</div>
-					<!--/panel panel default-->
-				</div>
-			</div>
-			</div>
-			<!--/row-->	 	
-		  		
+	<div class="main-content">
+		
 	</div>
 			<!-- Footer -->
 			<footer class="footer-main"> 
@@ -264,8 +194,7 @@
                     </div>
                 </div>
 
-			</footer>
-			</footer>		
+			</footer>	
 			<!-- /footer -->
 	  </div>
 	  <!-- /main content -->

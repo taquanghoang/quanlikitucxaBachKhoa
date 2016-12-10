@@ -1,4 +1,5 @@
-
+<?php session_start();
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -83,16 +84,32 @@
 				</ul>
 			</li>
 
-			<li class="has-sub"><a href="basic-tables.html"><i class="icon-window"></i><span class="title">Hoạt Động Cư Trú</span></a>
-				<ul class="nav collapse">
-					<li><a href="registation-room.php"><span class="title">Đăng Ký Phòng</span></a></li>
+			<?php 
+				if(isset($_SESSION['TaiKhoan'])){
+					echo "<li class='has-sub'><a href='panels.html'><i class='icon-users'></i><span class='title'>Người Dùng</span></a>
+					<ul class='nav collapse'>
+					<li><a href='index_user.php'><span class='title'>Thông tin cá nhân </span></a></li>
+					<li><a href='user_room_information.php'><span class='title'>Thông tin phòng</span></a></li>	
+					<li><a href='user_thongbao.php'><span class='title'>Thông báo</span></a></li>					
+					<li><a href='user_reported-missing.php'><span class='title'>Báo vắng</span></a></li>			
+					<li><a href='user_extend-room.php'><span class='title'>Gia Hạn Phòng</span></a></li>
+					<li><a href='user_request.php'><span class='title'>Yêu Cầu</span></a></li>					
+					<li><a href='service.php'><span class='title'>Dịch Vụ</span></a></li>					
+					<li><a href='feedback.php'><span class='title'>Góp ý</span></a></li>					
+					</ul>
+						</li>";
+				}else{
+					echo "<li class='has-sub'><a href='basic-tables.html'><i class='icon-window'></i><span class='title'>Hoạt Động Cư Trú</span></a>
+				<ul class='nav collapse'>
+					<li><a href='registation-room.php'><span class='title'>Đăng Ký Phòng</span></a></li>	
 				</ul>
-			</li>
-			<li class="other-activity.html"><a href="other-activity_index.php"><i class="icon-doc-text"></i><span class="title">Hoạt Động Khác</span></a>
+			</li>";
+				}
+			?>
+			<li class="other-activity.html"><a href="orther-activity_index.php"><i class="icon-doc-text"></i><span class="title">Hoạt Động Khác</span></a>
 			</li>
 			<li class="seach.html"><a href="seach.php"><i class="icon-search"></i><span class="title">Tìm Kiếm</span></a>
 			</li>
-
 		</ul>
 		<!-- /main navigation -->		
   </div>
@@ -119,9 +136,22 @@
 		    </div>
 					  	<div class="col-sm-6 col-xs-7">
 		  			<div style="float: right;">
-			  				<div class="login-signup">
-			  				<button class="btn btn-primary btn-width" type="button" style="margin-left:8px"><a href="login.php">Đăng Nhập</a></button>
-			  			</div>						
+			  				<?php 
+      				 if (isset($_SESSION['TaiKhoan'])){
+      				 	echo "<a data-toggle='dropdown' class='dropdown-toggle' href='index_user.php' aria-expanded='false'>
+      				 		<img width='44' class='img-circle avatar' alt='' src='images/nu.jpg'>{$_SESSION['TaiKhoan']}
+      				 		<span class='caret'></span></a>
+      				 		<ul class='dropdown-menu'>
+				 			<li><a href='#''><i class='icon-cog'></i>Account settings</a></li>
+				  			<li><a href='logout.php'><i class='icon-logout'></i>Logout</a></li>
+							</ul>";
+      				 }else{
+      				 	echo "<div class='login-signup'>
+			  				  <button class='btn btn-primary btn-width' type='button' style='margin-left:8px'>
+			  				  <a href='login.php'>Đăng Nhập</a></button>
+			  				  </div>";	
+      				 }
+      				 ?>											
 		  			</div>
 			
 		  	</div>
@@ -154,335 +184,214 @@
 					<p style="display: inline;font-size: 25px;"><b>Nhà A</b></p>
 				</div>
 				<div class="row mdrow">
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>101</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>102</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>103</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>104</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>105</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>	
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>106</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
+							<?php 
+								include('DatabaseConnection.php');
+								$sql = "Select TenPhong,SoLuongNgO,SoLuongNgOToiDa from phong where MaKV='KV01' and TenPhong in ('101','102','103','104','105','106')";
+                                 $retval = mysqli_query($link,$sql);
+                                 if(! $retval ){
+                                 die('Không thể lấy dữ liệu: ' . mysqli_error());
+                                 } 
+                                 while($row = mysqli_fetch_array($retval, MYSQL_ASSOC))
+                                {
+                                	echo "
+                                	<div class='col-sm-2' style=' padding: 2px'; onclick='OpenPopup(172);'>
+									<div class='card primary-view' style='height: 120px'>
+                                	<div class='header-room-reg' style='height: 40px;'>
+									<p><b>{$row['TenPhong']}</b></p>";
+									if($row['SoLuongNgO']==$row['SoLuongNgOToiDa']){
+										echo "
+									<button class='btn btn-red btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button>
+									</div>";
+									}else{
+										echo "<button class='btn btn-success btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button></div>";
+									}
+									
+									if($row['SoLuongNgO']<=3){
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<$row['SoLuongNgO'];$i++){
+											echo"
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(3-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+									}
+									else{
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<($row['SoLuongNgO']-3);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(6-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";	
+									}
+									echo "</div>
+										</div>";
+                                }	
+								?>							
 				</div>
 				<div class="row mdrow">
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>201</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>202</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>203</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-								<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>204</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>205</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>206</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
+					<?php 
+								include('DatabaseConnection.php');
+								$sql = "Select TenPhong,SoLuongNgO,SoLuongNgOToiDa from phong where MaKV='KV01' and TenPhong in ('201','202','203','204','205','206')";
+                                 $retval = mysqli_query($link,$sql);
+                                 if(! $retval ){
+                                 die('Không thể lấy dữ liệu: ' . mysqli_error());
+                                 } 
+                                 while($row = mysqli_fetch_array($retval, MYSQL_ASSOC))
+                                {
+                                	echo "
+                                	<div class='col-sm-2' style=' padding: 2px'; onclick='OpenPopup(172);'>
+									<div class='card primary-view' style='height: 120px'>
+                                	<div class='header-room-reg' style='height: 40px;'>
+									<p><b>{$row['TenPhong']}</b></p>";
+									if($row['SoLuongNgO']==$row['SoLuongNgOToiDa']){
+										echo "
+									<button class='btn btn-red btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button>
+									</div>";
+									}else{
+										echo "<button class='btn btn-success btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button></div>";
+									}
+									
+									if($row['SoLuongNgO']<=3){
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<$row['SoLuongNgO'];$i++){
+											echo"
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(3-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+									}
+									else{
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<($row['SoLuongNgO']-3);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(6-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";	
+									}
+									echo "</div>
+										</div>";
+                                }	
+								?>							
 				</div>
 				<div class="row mdrow">
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>301</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>302</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>303</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-								<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>304</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>305</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>306</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-				</div>
+					<?php 
+								include('DatabaseConnection.php');
+								$sql = "Select TenPhong,SoLuongNgO,SoLuongNgOToiDa from phong where MaKV='KV01' and TenPhong in ('301','302','303','304','305','306')";
+                                 $retval = mysqli_query($link,$sql);
+                                 if(! $retval ){
+                                 die('Không thể lấy dữ liệu: ' . mysqli_error());
+                                 } 
+                                 while($row = mysqli_fetch_array($retval, MYSQL_ASSOC))
+                                {
+                                	echo "
+                                	<div class='col-sm-2' style=' padding: 2px'; onclick='OpenPopup(172);'>
+									<div class='card primary-view' style='height: 120px'>
+                                	<div class='header-room-reg' style='height: 40px;'>
+									<p><b>{$row['TenPhong']}</b></p>";
+									if($row['SoLuongNgO']==$row['SoLuongNgOToiDa']){
+										echo "
+									<button class='btn btn-red btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button>
+									</div>";
+									}else{
+										echo "<button class='btn btn-success btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button></div>";
+									}
+									
+									if($row['SoLuongNgO']<=3){
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<$row['SoLuongNgO'];$i++){
+											echo"
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(3-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+									}
+									else{
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<($row['SoLuongNgO']-3);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(6-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";	
+									}
+									echo "</div>
+										</div>";
+                                }	
+								?>							
 			</div>
 			<div class="panel panel-default" style="background: #F5F5F5">
 				<div class="list-home">
@@ -490,335 +399,214 @@
 					<p style="display: inline;font-size: 25px;"><b>Nhà B</b></p>
 				</div>
 				<div class="row mdrow">
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>101</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>102</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>103</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>104</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>105</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>	
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>106</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
+					<?php 
+								include('DatabaseConnection.php');
+								$sql = "Select TenPhong,SoLuongNgO,SoLuongNgOToiDa from phong where MaKV='KV02' and TenPhong in ('101','102','103','104','105','106')";
+                                 $retval = mysqli_query($link,$sql);
+                                 if(! $retval ){
+                                 die('Không thể lấy dữ liệu: ' . mysqli_error());
+                                 } 
+                                 while($row = mysqli_fetch_array($retval, MYSQL_ASSOC))
+                                {
+                                	echo "
+                                	<div class='col-sm-2' style=' padding: 2px'; onclick='OpenPopup(172);'>
+									<div class='card primary-view' style='height: 120px'>
+                                	<div class='header-room-reg' style='height: 40px;'>
+									<p><b>{$row['TenPhong']}</b></p>";
+									if($row['SoLuongNgO']==$row['SoLuongNgOToiDa']){
+										echo "
+									<button class='btn btn-red btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button>
+									</div>";
+									}else{
+										echo "<button class='btn btn-success btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button></div>";
+									}
+									
+									if($row['SoLuongNgO']<=3){
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<$row['SoLuongNgO'];$i++){
+											echo"
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(3-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+									}
+									else{
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<($row['SoLuongNgO']-3);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(6-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";	
+									}
+									echo "</div>
+										</div>";
+                                }	
+								?>							
 				</div>
 				<div class="row mdrow">
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>201</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>202</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>203</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-								<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>204</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>205</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>206</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
+					<?php 
+								include('DatabaseConnection.php');
+								$sql = "Select TenPhong,SoLuongNgO,SoLuongNgOToiDa from phong where MaKV='KV02' and TenPhong in ('201','202','203','204','205','206')";
+                                 $retval = mysqli_query($link,$sql);
+                                 if(! $retval ){
+                                 die('Không thể lấy dữ liệu: ' . mysqli_error());
+                                 } 
+                                 while($row = mysqli_fetch_array($retval, MYSQL_ASSOC))
+                                {
+                                	echo "
+                                	<div class='col-sm-2' style=' padding: 2px'; onclick='OpenPopup(172);'>
+									<div class='card primary-view' style='height: 120px'>
+                                	<div class='header-room-reg' style='height: 40px;'>
+									<p><b>{$row['TenPhong']}</b></p>";
+									if($row['SoLuongNgO']==$row['SoLuongNgOToiDa']){
+										echo "
+									<button class='btn btn-red btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button>
+									</div>";
+									}else{
+										echo "<button class='btn btn-success btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button></div>";
+									}
+									
+									if($row['SoLuongNgO']<=3){
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<$row['SoLuongNgO'];$i++){
+											echo"
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(3-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+									}
+									else{
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<($row['SoLuongNgO']-3);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(6-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";	
+									}
+									echo "</div>
+										</div>";
+                                }	
+								?>				
 				</div>
 				<div class="row mdrow">
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>301</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>302</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>303</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-								<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>304</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>305</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>306</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-				</div>
+					<?php 
+								include('DatabaseConnection.php');
+								$sql = "Select TenPhong,SoLuongNgO,SoLuongNgOToiDa from phong where MaKV='KV02' and TenPhong in ('301','302','303','304','305','306')";
+                                 $retval = mysqli_query($link,$sql);
+                                 if(! $retval ){
+                                 die('Không thể lấy dữ liệu: ' . mysqli_error());
+                                 } 
+                                 while($row = mysqli_fetch_array($retval, MYSQL_ASSOC))
+                                {
+                                	echo "
+                                	<div class='col-sm-2' style=' padding: 2px'; onclick='OpenPopup(172);'>
+									<div class='card primary-view' style='height: 120px'>
+                                	<div class='header-room-reg' style='height: 40px;'>
+									<p><b>{$row['TenPhong']}</b></p>";
+									if($row['SoLuongNgO']==$row['SoLuongNgOToiDa']){
+										echo "
+									<button class='btn btn-red btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button>
+									</div>";
+									}else{
+										echo "<button class='btn btn-success btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button></div>";
+									}
+									
+									if($row['SoLuongNgO']<=3){
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<$row['SoLuongNgO'];$i++){
+											echo"
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(3-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+									}
+									else{
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<($row['SoLuongNgO']-3);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(6-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";	
+									}
+									echo "</div>
+										</div>";
+                                }	
+								?>							
 			</div>
 			<div class="panel panel-default" style="background: #F5F5F5">
 				<div class="list-home">
@@ -826,335 +614,214 @@
 					<p style="display: inline;font-size: 25px;"><b>Nhà C</b></p>
 				</div>
 				<div class="row mdrow">
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>101</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>102</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>103</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>104</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>105</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>	
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>106</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
+					<?php 
+								include('DatabaseConnection.php');
+								$sql = "Select TenPhong,SoLuongNgO,SoLuongNgOToiDa from phong where MaKV='KV03' and TenPhong in ('101','102','103','104','105','106')";
+                                 $retval = mysqli_query($link,$sql);
+                                 if(! $retval ){
+                                 die('Không thể lấy dữ liệu: ' . mysqli_error());
+                                 } 
+                                 while($row = mysqli_fetch_array($retval, MYSQL_ASSOC))
+                                {
+                                	echo "
+                                	<div class='col-sm-2' style=' padding: 2px'; onclick='OpenPopup(172);'>
+									<div class='card primary-view' style='height: 120px'>
+                                	<div class='header-room-reg' style='height: 40px;'>
+									<p><b>{$row['TenPhong']}</b></p>";
+									if($row['SoLuongNgO']==$row['SoLuongNgOToiDa']){
+										echo "
+									<button class='btn btn-red btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button>
+									</div>";
+									}else{
+										echo "<button class='btn btn-success btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button></div>";
+									}
+									
+									if($row['SoLuongNgO']<=3){
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<$row['SoLuongNgO'];$i++){
+											echo"
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(3-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+									}
+									else{
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<($row['SoLuongNgO']-3);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(6-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";	
+									}
+									echo "</div>
+										</div>";
+                                }	
+								?>				
 				</div>
 				<div class="row mdrow">
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>201</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>202</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>203</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-								<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>204</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>205</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>206</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
+					<?php 
+								include('DatabaseConnection.php');
+								$sql = "Select TenPhong,SoLuongNgO,SoLuongNgOToiDa from phong where MaKV='KV03' and TenPhong in ('201','202','203','204','205','206')";
+                                 $retval = mysqli_query($link,$sql);
+                                 if(! $retval ){
+                                 die('Không thể lấy dữ liệu: ' . mysqli_error());
+                                 } 
+                                 while($row = mysqli_fetch_array($retval, MYSQL_ASSOC))
+                                {
+                                	echo "
+                                	<div class='col-sm-2' style=' padding: 2px'; onclick='OpenPopup(172);'>
+									<div class='card primary-view' style='height: 120px'>
+                                	<div class='header-room-reg' style='height: 40px;'>
+									<p><b>{$row['TenPhong']}</b></p>";
+									if($row['SoLuongNgO']==$row['SoLuongNgOToiDa']){
+										echo "
+									<button class='btn btn-red btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button>
+									</div>";
+									}else{
+										echo "<button class='btn btn-success btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button></div>";
+									}
+									
+									if($row['SoLuongNgO']<=3){
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<$row['SoLuongNgO'];$i++){
+											echo"
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(3-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+									}
+									else{
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<($row['SoLuongNgO']-3);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(6-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";	
+									}
+									echo "</div>
+										</div>";
+                                }	
+								?>				
 				</div>
 				<div class="row mdrow">
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>301</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>302</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>303</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-								<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>304</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>305</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>306</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-				</div>
+					<?php 
+								include('DatabaseConnection.php');
+								$sql = "Select TenPhong,SoLuongNgO,SoLuongNgOToiDa from phong where MaKV='KV03' and TenPhong in ('301','302','303','304','305','306')";
+                                 $retval = mysqli_query($link,$sql);
+                                 if(! $retval ){
+                                 die('Không thể lấy dữ liệu: ' . mysqli_error());
+                                 } 
+                                 while($row = mysqli_fetch_array($retval, MYSQL_ASSOC))
+                                {
+                                	echo "
+                                	<div class='col-sm-2' style=' padding: 2px'; onclick='OpenPopup(172);'>
+									<div class='card primary-view' style='height: 120px'>
+                                	<div class='header-room-reg' style='height: 40px;'>
+									<p><b>{$row['TenPhong']}</b></p>";
+									if($row['SoLuongNgO']==$row['SoLuongNgOToiDa']){
+										echo "
+									<button class='btn btn-red btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button>
+									</div>";
+									}else{
+										echo "<button class='btn btn-success btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button></div>";
+									}
+									
+									if($row['SoLuongNgO']<=3){
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<$row['SoLuongNgO'];$i++){
+											echo"
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(3-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+									}
+									else{
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<($row['SoLuongNgO']-3);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(6-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";	
+									}
+									echo "</div>
+										</div>";
+                                }	
+								?>							
 			</div>
 			<div class="panel panel-default" style="background: #F5F5F5">
 				<div class="list-home">
@@ -1162,334 +829,214 @@
 					<p style="display: inline;font-size: 25px;"><b>Nhà D</b></p>
 				</div>
 				<div class="row mdrow">
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>101</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>102</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>103</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>104</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>105</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>	
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>106</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
+					<?php 
+								include('DatabaseConnection.php');
+								$sql = "Select TenPhong,SoLuongNgO,SoLuongNgOToiDa from phong where MaKV='KV04' and TenPhong in ('101','102','103','104','105','106')";
+                                 $retval = mysqli_query($link,$sql);
+                                 if(! $retval ){
+                                 die('Không thể lấy dữ liệu: ' . mysqli_error());
+                                 } 
+                                 while($row = mysqli_fetch_array($retval, MYSQL_ASSOC))
+                                {
+                                	echo "
+                                	<div class='col-sm-2' style=' padding: 2px'; onclick='OpenPopup(172);'>
+									<div class='card primary-view' style='height: 120px'>
+                                	<div class='header-room-reg' style='height: 40px;'>
+									<p><b>{$row['TenPhong']}</b></p>";
+									if($row['SoLuongNgO']==$row['SoLuongNgOToiDa']){
+										echo "
+									<button class='btn btn-red btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button>
+									</div>";
+									}else{
+										echo "<button class='btn btn-success btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button></div>";
+									}
+									
+									if($row['SoLuongNgO']<=3){
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<$row['SoLuongNgO'];$i++){
+											echo"
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(3-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+									}
+									else{
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<($row['SoLuongNgO']-3);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(6-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";	
+									}
+									echo "</div>
+										</div>";
+                                }	
+								?>				
 				</div>
 				<div class="row mdrow">
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>201</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>202</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>203</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-								<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>204</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>205</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>206</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
+					<?php 
+								include('DatabaseConnection.php');
+								$sql = "Select TenPhong,SoLuongNgO,SoLuongNgOToiDa from phong where MaKV='KV04' and TenPhong in ('201','202','203','204','205','206')";
+                                 $retval = mysqli_query($link,$sql);
+                                 if(! $retval ){
+                                 die('Không thể lấy dữ liệu: ' . mysqli_error());
+                                 } 
+                                 while($row = mysqli_fetch_array($retval, MYSQL_ASSOC))
+                                {
+                                	echo "
+                                	<div class='col-sm-2' style=' padding: 2px'; onclick='OpenPopup(172);'>
+									<div class='card primary-view' style='height: 120px'>
+                                	<div class='header-room-reg' style='height: 40px;'>
+									<p><b>{$row['TenPhong']}</b></p>";
+									if($row['SoLuongNgO']==$row['SoLuongNgOToiDa']){
+										echo "
+									<button class='btn btn-red btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button>
+									</div>";
+									}else{
+										echo "<button class='btn btn-success btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button></div>";
+									}
+									
+									if($row['SoLuongNgO']<=3){
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<$row['SoLuongNgO'];$i++){
+											echo"
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(3-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+									}
+									else{
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<($row['SoLuongNgO']-3);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(6-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";	
+									}
+									echo "</div>
+										</div>";
+                                }	
+								?>	
 				</div>
 				<div class="row mdrow">
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>301</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>302</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>303</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-								<div class="col-sm-2" style=" padding: 2px"; onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px;">
-								<p><b>304</b></p>
-								<button class="btn btn-red btn-rounded btn-xs" type="button" style="float: right;">6/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>305</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">2/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2" style=" padding: 2px" onclick="OpenPopup(172);">
-						<div class="card primary-view" style="height: 120px">
-							<div class="header-room-reg" style="height: 40px">
-								<p style="display: inline; font-size: 22px"><b>306</b></p>
-								<button class="btn btn-success btn-rounded btn-xs" type="button" style="float: right;">3/6</button>
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>
-								<i class="fa fa-user persion-reg persion-on-reg"></i>						
-							</div>
-							<div class="body-room-reg">
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-								<i class="fa fa-user persion-reg persion-off-reg"></i>
-							</div>
-						</div>
-					</div>
+					<?php 
+								include('DatabaseConnection.php');
+								$sql = "Select TenPhong,SoLuongNgO,SoLuongNgOToiDa from phong where MaKV='KV04' and TenPhong in ('301','302','303','304','305','306')";
+                                 $retval = mysqli_query($link,$sql);
+                                 if(! $retval ){
+                                 die('Không thể lấy dữ liệu: ' . mysqli_error());
+                                 } 
+                                 while($row = mysqli_fetch_array($retval, MYSQL_ASSOC))
+                                {
+                                	echo "
+                                	<div class='col-sm-2' style=' padding: 2px'; onclick='OpenPopup(172);'>
+									<div class='card primary-view' style='height: 120px'>
+                                	<div class='header-room-reg' style='height: 40px;'>
+									<p><b>{$row['TenPhong']}</b></p>";
+									if($row['SoLuongNgO']==$row['SoLuongNgOToiDa']){
+										echo "
+									<button class='btn btn-red btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button>
+									</div>";
+									}else{
+										echo "<button class='btn btn-success btn-rounded btn-xs' type='button' style='float: right;'>{$row['SoLuongNgO']}/{$row['SoLuongNgOToiDa']}</button></div>";
+									}
+									
+									if($row['SoLuongNgO']<=3){
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<$row['SoLuongNgO'];$i++){
+											echo"
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(3-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";
+									}
+									else{
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<3;$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										echo "</div>";
+										echo "<div class='body-room-reg'>";
+										for($i=0;$i<($row['SoLuongNgO']-3);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-on-reg'></i>						
+											";	
+										}
+										for($i=0;$i<(6-$row['SoLuongNgO']);$i++){
+											echo "
+											<i class='fa fa-user persion-reg persion-off-reg'></i>						
+											";	
+										}
+										echo "</div>";	
+									}
+									echo "</div>
+										</div>";
+                                }	
+								?>							
 				</div>
 			</div>
 

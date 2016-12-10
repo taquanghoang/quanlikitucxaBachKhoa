@@ -1,4 +1,5 @@
-
+<?php session_start();
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -84,16 +85,32 @@
 			</li>
 
 			
-			<li class="has-sub"><a href="basic-tables.html"><i class="icon-window"></i><span class="title">Hoạt Động Cư Trú</span></a>
-				<ul class="nav collapse">
-					<li><a href="registation-room.php"><span class="title">Đăng Ký Phòng</span></a></li>					
+			<?php 
+				if(isset($_SESSION['TaiKhoan'])){
+					echo "<li class='has-sub'><a href='panels.html'><i class='icon-users'></i><span class='title'>Người Dùng</span></a>
+					<ul class='nav collapse'>
+					<li><a href='index_user.php'><span class='title'>Thông tin cá nhân </span></a></li>
+					<li><a href='user_room_information.php'><span class='title'>Thông tin phòng</span></a></li>	
+					<li><a href='user_thongbao.php'><span class='title'>Thông báo</span></a></li>					
+					<li><a href='user_reported-missing.php'><span class='title'>Báo vắng</span></a></li>			
+					<li><a href='user_extend-room.php'><span class='title'>Gia Hạn Phòng</span></a></li>
+					<li><a href='user_request.php'><span class='title'>Yêu Cầu</span></a></li>					
+					<li><a href='service.php'><span class='title'>Dịch Vụ</span></a></li>					
+					<li><a href='feedback.php'><span class='title'>Góp ý</span></a></li>					
+					</ul>
+						</li>";
+				}else{
+					echo "<li class='has-sub'><a href='basic-tables.html'><i class='icon-window'></i><span class='title'>Hoạt Động Cư Trú</span></a>
+				<ul class='nav collapse'>
+					<li><a href='registation-room.php'><span class='title'>Đăng Ký Phòng</span></a></li>	
 				</ul>
-			</li>
-			<li class="other-activity.html"><a href="other-activity_index.php"><i class="icon-doc-text"></i><span class="title">Hoạt Động Khác</span></a>
+			</li>";
+				}
+			?>
+			<li class="other-activity.html"><a href="orther-activity_index.php"><i class="icon-doc-text"></i><span class="title">Hoạt Động Khác</span></a>
 			</li>
 			<li class="seach.html"><a href="seach.php"><i class="icon-search"></i><span class="title">Tìm Kiếm</span></a>
 			</li>
-
 		</ul>
 		<!-- /main navigation -->		
   </div>
@@ -121,9 +138,22 @@
 					<div class="col-sm-6 col-xs-7">
 		  			<!-- Kiểm tra session đăng nhập --> 
 		  			<div style="float: right;">
-			  				<div class="login-signup">
-			  				<button class="btn btn-primary btn-width" type="button" style="margin-left:8px"><a href="login.php">Đăng Nhập</a></button>
-			  			</div>
+			  				<?php 
+      				 if (isset($_SESSION['TaiKhoan'])){
+      				 	echo "<a data-toggle='dropdown' class='dropdown-toggle' href='index_user.php' aria-expanded='false'>
+      				 		<img width='44' class='img-circle avatar' alt='' src='images/nu.jpg'>{$_SESSION['TaiKhoan']}
+      				 		<span class='caret'></span></a>
+      				 		<ul class='dropdown-menu'>
+				 			<li><a href='#''><i class='icon-cog'></i>Account settings</a></li>
+				  			<li><a href='logout.php'><i class='icon-logout'></i>Logout</a></li>
+							</ul>";
+      				 }else{
+      				 	echo "<div class='login-signup'>
+			  				  <button class='btn btn-primary btn-width' type='button' style='margin-left:8px'>
+			  				  <a href='login.php'>Đăng Nhập</a></button>
+			  				  </div>";	
+      				 }
+      				 ?>						
 		  			</div>
 			
 		  	</div>
@@ -150,315 +180,79 @@
 		<!-- Card grid view -->
 		<div class="cards-container grid-view">
 			<div class="row">
-				<div class="col-lg-3 col-sm-6">
-				
-					<!-- Card -->
-					<div class="card primary-view">
-					
-						<!-- Card header -->
-						<div class="card-header">
-						
-							<!-- Card photo -->
-							<div class="card-photo">
-								<img title="John Smith" alt="John Smith" src="images/man-3.jpg" class="img-circle avatar">
-							</div>
-							<!-- /card photo -->
-							
-							<!-- Card short description -->
-							<div class="card-short-description">
-								<h5><span class="user-name user-name-fm"><a href="#/">TS.Đặng Hoài Phương</a></span></h5>
-								<p class="uppercase chucvu-fm">PTP CTSV</p>
-							</div>
-							<!-- /card short description -->
-							
-							
-						</div>
-						<!-- /card header -->
-						
-						<!-- Card content -->
-						<div class="card-content officials-text">
-							<p>SĐT: 0935578555</p>
-							<p>Quản lý hoạt động chung của Ký túc xá</p>
-							
-						</div>
-						<!-- /card content -->
-						
-					</div>
-					<!-- /card -->
-					
-				</div>
-				<div class="col-lg-3 col-sm-6">
-				
-					<!-- Card -->
-					<div class="card primary-view">
-					
-						<!-- Card header -->
-						<div class="card-header">
-						
-							<!-- Card photo -->
-							<div class="card-photo">
-								<img title="John Smith" alt="John Smith" src="images/man-3.jpg" class="img-circle avatar">
-							</div>
-							<!-- /card photo -->
-							
-							<!-- Card short description -->
-							<div class="card-short-description">
-								<h5><span class="user-name user-name-fm"><a href="#/">Trần Nãi</a></span></h5>
-								<p class="uppercase chucvu-fm">Tổ phó</p>
-							</div>
-							<!-- /card short description -->
-							
-							
-						</div>
-						<!-- /card header -->
-						
-						<!-- Card content -->
-						<div class="card-content officials-text">
-							<p>SĐT: 0914926155</p>
-							<p>Phụ trách văn phòng Ban quản lý Ký túc xá</p>
-							
-						</div>
-						<!-- /card content -->
-						
-					</div>
-					<!-- /card -->
-					
-				</div>
-				<div class="col-lg-3 col-sm-6">
-				
-					<!-- Card -->
-					<div class="card primary-view">
-					
-						<!-- Card header -->
-						<div class="card-header">
-						
-							<!-- Card photo -->
-							<div class="card-photo">
-								<img title="John Smith" alt="John Smith" src="images/stella-johnson.png" class="img-circle avatar">
-							</div>
-							<!-- /card photo -->
-							
-							<!-- Card short description -->
-							<div class="card-short-description">
-								<h5><span class="user-name user-name-fm"><a href="#/">Phạm Viết Thương</a></span></h5>
-								<p class="uppercase chucvu-fm">Tổ phó</p>
-							</div>
-							<!-- /card short description -->
-							
-							
-						</div>
-						<!-- /card header -->
-						
-						<!-- Card content -->
-						<div class="card-content officials-text">
-							<p>SĐT: 0905091891</p>
-							<p>Phụ trách chung về an ninh trật tự Ký túc xá, quản lý nhà 3 (Ký túc xá của sinh viên nước ngoài)</p>
-							
-						</div>
-						<!-- /card content -->
-						
-					</div>
-					<!-- /card -->
-					
-				</div>
-				<div class="col-lg-3 col-sm-6">
-				
-					<!-- Card -->
-					<div class="card primary-view">
-					
-						<!-- Card header -->
-						<div class="card-header">
-						
-							<!-- Card photo -->
-							<div class="card-photo">
-								<img title="John Smith" alt="John Smith" src="images/stella-johnson.png" class="img-circle avatar">
-							</div>
-							<!-- /card photo -->
-							
-							<!-- Card short description -->
-							<div class="card-short-description">
-								<h5><span class="user-name user-name-fm"><a href="#/">Hoàng Thu</a></span></h5>
-								<p class="uppercase chucvu-fm">Nhân viên</p>
-							</div>
-							<!-- /card short description -->
-							
-							
-						</div>
-						<!-- /card header -->
-						
-						<!-- Card content -->
-						<div class="card-content officials-text">
-							<p>SĐT: 01293581379</p>
-							<p>Phụ trách sửa chửa trong Ký túc xá</p>
-							
-						</div>
-						<!-- /card content -->
-						
-					</div>
-					<!-- /card -->
-					
-				</div>
+				<?php
+					include('DatabaseConnection.php');
+					$sql2 = "SELECT MaCV,TenNV,SDT FROM nhanvien where MaNV in (1,2,3,4)" ;
+					$query = mysqli_query($link,$sql2);
+					while($row = mysqli_fetch_array($query,MYSQL_ASSOC)){
+					$sql1 = "SELECT TenCV,MaPB FROM chucvu WHERE MaCV='{$row['MaCV']}'";
+					$query1 = mysqli_query($link,$sql1);
+					while($row1 = mysqli_fetch_array($query1,MYSQL_ASSOC)){
+			
+					$sql3 = "SELECT TenPB FROM phongban where MaPB='{$row1['MaPB']}'";
+					$query2 = mysqli_query($link,$sql3);
+					while($row2 = mysqli_fetch_array($query2,MYSQL_ASSOC)){
+						echo "<div class='col-lg-3 col-sm-6'>
+								<div class='card primary-view'>
+									<div class='card-header'>
+										<div class='card-photo'>
+											<img title='John Smith' alt='John Smith' src='images/man-3.jpg' class='img-circle avatar'>
+										</div>
+										<div class='card-short-description'>
+										<h5><span class='user-name user-name-fm'><a href='#'>{$row['TenNV']}</a></span></h5>
+											<p class='uppercase chucvu-fm'>{$row2['TenPB']}</p>
+										</div>
+									</div>
+									<div class='card-content officials-text'>
+										<p>SĐT: {$row['SDT']}</p>
+										<p>{$row1['TenCV']}</p>
+									</div>
+								</div>				
+							</div>";						
+							}
+			
+						}	
+					}				
+				?>	
 			</div>
 			<div class="row">
-				<div class="col-lg-3 col-sm-6">
-				
-					<!-- Card -->
-					<div class="card primary-view">
-					
-						<!-- Card header -->
-						<div class="card-header">
-						
-							<!-- Card photo -->
-							<div class="card-photo">
-								<img title="John Smith" alt="John Smith" src="images/stella-johnson.png" class="img-circle avatar">
-							</div>
-							<!-- /card photo -->
-							
-							<!-- Card short description -->
-							<div class="card-short-description">
-								<h5><span class="user-name user-name-fm"><a href="#/">Trần Ngọc Ba</a></span></h5>
-								<p class="uppercase chucvu-fm">Nhân viên</p>
-							</div>
-							<!-- /card short description -->
-							
-							
-						</div>
-						<!-- /card header -->
-						
-						<!-- Card content -->
-						<div class="card-content officials-text">
-							<p>SĐT: 01268559977</p>
-							<p>Phụ trách quản lý nhà 4</p>
-							
-						</div>
-						<!-- /card content -->
-						
-					</div>
-					<!-- /card -->
-					
-				</div>
-				<div class="col-lg-3 col-sm-6">
-				
-					<!-- Card -->
-					<div class="card primary-view">
-					
-						<!-- Card header -->
-						<div class="card-header">
-						
-							<!-- Card photo -->
-							<div class="card-photo">
-								<img title="John Smith" alt="John Smith" src="images/stella-johnson.png" class="img-circle avatar">
-							</div>
-							<!-- /card photo -->
-							
-							<!-- Card short description -->
-							<div class="card-short-description">
-								<h5><span class="user-name user-name-fm"><a href="#/">Nguyễn Vinh</a></span></h5>
-								<p class="uppercase chucvu-fm">Nhân viên</p>
-							</div>
-							<!-- /card short description -->
-							
-							
-						</div>
-						<!-- /card header -->
-						
-						<!-- Card content -->
-						<div class="card-content officials-text">
-							<p>SĐT: 0914563590</p>
-							<p>Phụ trách quản lý nhà 1</p>
-							
-						</div>
-						<!-- /card content -->
-						
-					</div>
-					<!-- /card -->
-					
-				</div>
-				<div class="col-lg-3 col-sm-6">
-				
-					<!-- Card -->
-					<div class="card primary-view">
-					
-						<!-- Card header -->
-						<div class="card-header">
-						
-							<!-- Card photo -->
-							<div class="card-photo">
-								<img title="John Smith" alt="John Smith" src="images/stella-johnson.png" class="img-circle avatar">
-							</div>
-							<!-- /card photo -->
-							
-							<!-- Card short description -->
-							<div class="card-short-description">
-								<h5><span class="user-name user-name-fm"><a href="#/">Nguyễn Anh Sơn</a></span></h5>
-								<p class="uppercase chucvu-fm">Nhân viên</p>
-							</div>
-							<!-- /card short description -->
-							
-							
-						</div>
-						<!-- /card header -->
-						
-						<!-- Card content -->
-						<div class="card-content officials-text">
-							<p>SĐT: 0914300941</p>
-							<p>Phụ trách quản lý nhà 2</p>
-							
-						</div>
-						<!-- /card content -->
-						
-					</div>
-					<!-- /card -->
-					
-				</div>
-				<div class="col-lg-3 col-sm-6">
-				
-					<!-- Card -->
-					<div class="card primary-view">
-					
-						<!-- Card header -->
-						<div class="card-header">
-						
-							<!-- Card photo -->
-							<div class="card-photo">
-								<img title="John Smith" alt="John Smith" src="images/stella-johnson.png" class="img-circle avatar">
-							</div>
-							<!-- /card photo -->
-							
-							<!-- Card short description -->
-							<div class="card-short-description">
-								<h5><span class="user-name user-name-fm"><a href="#/">Nguyễn Việt Hùng</a></span></h5>
-								<p class="uppercase chucvu-fm">Nhân viên</p>
-							</div>
-							<!-- /card short description -->
-							
-							
-						</div>
-						<!-- /card header -->
-						
-						<!-- Card content -->
-						<div class="card-content officials-text">
-							<p>SĐT: 0975155859</p>
-							<p>Quản lý an ninh trật tự</p>
-							
-						</div>
-						<!-- /card content -->
-						
-					</div>
-					<!-- /card -->
-					
-				</div>
+				<?php
+					include('DatabaseConnection.php');
+					$sql2 = "SELECT MaCV,TenNV,SDT FROM nhanvien where MaNV in (5,6,7,8)" ;
+					$query = mysqli_query($link,$sql2);
+					while($row = mysqli_fetch_array($query,MYSQL_ASSOC)){
+					$sql1 = "SELECT TenCV,MaPB FROM chucvu WHERE MaCV='{$row['MaCV']}'";
+					$query1 = mysqli_query($link,$sql1);
+					while($row1 = mysqli_fetch_array($query1,MYSQL_ASSOC)){
+			
+					$sql3 = "SELECT TenPB FROM phongban where MaPB='{$row1['MaPB']}'";
+					$query2 = mysqli_query($link,$sql3);
+					while($row2 = mysqli_fetch_array($query2,MYSQL_ASSOC)){
+						echo "<div class='col-lg-3 col-sm-6'>
+								<div class='card primary-view'>
+									<div class='card-header'>
+										<div class='card-photo'>
+											<img title='John Smith' alt='John Smith' src='images/man-3.jpg' class='img-circle avatar'>
+										</div>
+										<div class='card-short-description'>
+										<h5><span class='user-name user-name-fm'><a href='#'>{$row['TenNV']}</a></span></h5>
+											<p class='uppercase chucvu-fm'>{$row2['TenPB']}</p>
+										</div>
+									</div>
+									<div class='card-content officials-text'>
+										<p>SĐT: {$row['SDT']}</p>
+										<p>{$row1['TenCV']}</p>
+									</div>
+								</div>				
+							</div>";						
+							}
+			
+						}	
+					}				
+				?>	
 			</div>
 		</div>
-		
-		
 	  </div>
-
-
-
-			<div class="row">
-				
-			</div>
 			<!-- Footer -->
 			<footer class="footer-main"> 
 				

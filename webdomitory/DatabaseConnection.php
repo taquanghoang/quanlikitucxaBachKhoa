@@ -16,5 +16,5 @@
             $link = mysqli_connect("localhost","root","") or die ("Khong the ket noi den CSDL MySQL");
             mysqli_set_charset($link,"utf8");
 
-            mysqli_select_db($link,"quanliktx");
+            mysqli_select_db($link,"qlktx");
  ?>
